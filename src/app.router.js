@@ -42,11 +42,15 @@ export const initApp = async (app, express) => {
   app.use("/auth", authRouter);
   app.use("/user", userRouter);
   app.use("/message", messageRouter);
-  app.get("/", (req, res) => {
-    // res.send("Hello World");
-    res.render("signup", {
-      pageTitle: "Signup",
-      cssLink: "./shared/css/signup.css",
-    });
+  app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send("حدث خطأ في الخادم!");
   });
+  // app.get("/", (req, res) => {
+  //   // res.send("Hello World");
+  //   res.render("signup", {
+  //     pageTitle: "Signup",
+  //     cssLink: "./shared/css/signup.css",
+  //   });
+  // });
 };

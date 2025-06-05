@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "dev": "nodemon index.js",
+    "production": "nodemon index.js"
   },
   "engines": {
     "node": "20.18.0"
