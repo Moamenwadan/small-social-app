@@ -1,0 +1,72 @@
+<%- include("./shared/header.ejs") %>
+
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-lg">
+        <div class="card-body p-5">
+          <h2 class="text-center mb-4 text-dark">Create Account</h2>
+          <form action="/auth" method="POST">
+            <!-- Username -->
+            <div class="mb-3">
+              <label  for="userName" class="form-label">Username</label>
+            
+            <input value="<%=oldData?.userName%>" type="text" class="form-control" id="userName" name="userName" min="3" minlength="3"  required  placeholder="Enter your username">
+            </div> 
+
+            <!-- Email -->
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input value="<%=oldData?.email%>"  class="form-control" id="email" name="email" required placeholder="name@example.com">
+     <% if ( validationErr?.includes("email")) { %>
+              <div class="alert alert-danger text-center my-2">
+                <p> you must enter correct email </p>
+                </div>
+             
+            <% } %>  
+         
+            </div>
+
+            <!-- Password -->
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input value="<%= oldData?.password %>" type="password" class="form-control" id="password" name="password" required placeholder="Enter your password">
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="mb-3">
+              <label for="confirmPassword" class="form-label">Confirm Password</label>
+              <input value="<%= oldData?.confirmPassword %>"  type="password" class="form-control" id="confirmPassword" name="confirmPassword" required  placeholder="Confirm your password">
+                 <% if (validationErr?.includes("confirmPassword")) { %>
+              <div class="alert alert-danger text-center my-2">
+                <p> the confirm password must match password </p>
+                </div>
+             
+            <% } %>  
+            </div>
+
+            <!-- Phone -->
+            <div class="mb-3">
+              <label for="phone" class="form-label">Phone Number</label>
+              <input value="<%= oldData?.phone %>"  type="tel" class="form-control" id="phone" name="phone" required placeholder="Enter your phone number">
+            </div>
+
+            <!-- Submit Button -->
+            <div class="d-grid gap-2 mt-4">
+              <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
+            </div>
+
+            <!-- Login Link -->
+            <div class="text-center mt-4">
+              Already have an account? <a href="/auth/login">Login here</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include("./shared/bootsrap.ejs") %>
+<!-- <%- include("./shared/jslink.ejs") %> -->
+</html>

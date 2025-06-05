@@ -1,0 +1,61 @@
+<%- include("./shared/header.ejs") %>
+<div class="container my-2">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-lg mb-2">
+        <div class="card-body p-3">
+          <h2 class="text-center mb-2 text-dark">Profile</h2>
+
+          <!-- User Info -->
+          <div class="text-center mb-2">
+            <!-- User Profile Image -->
+            <div class="mb-1">
+              <img
+                src="<%= user?.image?.secure_url || '/default-profile.png' %>"
+                alt="Profile Image"
+                class="rounded-circle mb-1"
+                style="
+                  width: 250px;
+                  height: 250px;
+                  object-fit: cover;
+                  border: 2px solid #007bff;
+                "
+              />
+            </div>
+            <div class="mb-1">
+              <h4 class="text-primary">Welcome:<%= user.userName %></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Upload Picture Card directly under profile card -->
+      <div class="card shadow-sm">
+        <div class="card-body p-3">
+          <h5 class="mb-1">send Message</h5>
+<form action="/message/" method="POST">
+            <div class="mb-1">
+              <input
+                name="receiver"
+                id="message"
+                class="form-control"
+                rows="5"
+                placeholder="Enter your friend's name to send message"
+              ></input>
+              <textarea
+                name="message"
+                id="message"
+                class="form-control"
+                rows="5"
+                placeholder="Enter your message here..."
+              ></textarea>
+            </div>
+            <div class="d-grid">
+              <button class="btn btn-primary" type="submit">send</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include("./shared/bootsrap.ejs") %>

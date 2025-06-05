@@ -1,0 +1,70 @@
+<%- include("./shared/header.ejs") %>
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-lg">
+        <div class="card-body p-5">
+          <h2 class="text-center mb-4 text-dark">Welcome Back</h2>
+          <form action="/auth/login" method="POST">
+            <% if(emailErr){ %>
+            <div class="alert alert-danger my-2">
+              <p><%= emailErr %></p>
+            </div>
+            <%}%>
+
+            <!-- Email -->
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input
+                class="form-control"
+                id="email"
+                name="email"
+                required
+                placeholder="name@example.com"
+                value="<%=oldData?.email%>"
+              />
+              <% if(validationErr?.includes("email")){ %>
+              <div class="alert alert-danger my-2">
+                <p>you must enter correct email</p>
+              </div>
+              <%}%>
+            </div>
+
+            <!-- Password -->
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                value="<%=oldData?.password%>"
+                required
+                placeholder="Enter your password"
+              />
+              <% if(validationErr?.includes("password")){ %>
+              <div class="alert alert-danger my-2">
+                <p>you must enter correct email</p>
+              </div>
+              <%}%>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="d-grid gap-2 mt-4">
+              <button type="submit" class="btn btn-primary btn-lg">
+                Login
+              </button>
+            </div>
+
+            <!-- Sign up Link -->
+            <div class="text-center mt-4">
+              Don't have an account? <a href="/auth">Sign up here</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include("./shared/bootsrap.ejs") %>
+<!-- <%- include("./shared/jslink.ejs") %> -->
