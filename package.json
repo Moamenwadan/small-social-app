@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js",
-    "dev": "nodemon index.js",
-    "production": "nodemon index.js"
+    "dev": "node --watch index.js",
+    "production": "node --watch index.js"
   },
   "engines": {
     "node": "20.18.0"
