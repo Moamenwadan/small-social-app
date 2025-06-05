@@ -36,6 +36,9 @@ export const initApp = async (app, express) => {
     })
   );
   app.use(flash());
+  app.get("/", (req, res) => {
+    res.redirect("/auth");
+  });
   app.use("/auth", authRouter);
   app.use("/user", userRouter);
   app.use("/message", messageRouter);
