@@ -7,6 +7,7 @@ const port = 3000;
 /**
  * // await initApp(app, express);
  */
+app.use('/' , ()=> console.log(`this is my main route!`))
 process.env.NODE_ENV === 'dev' ? 
   app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
