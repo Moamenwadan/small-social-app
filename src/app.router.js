@@ -8,6 +8,7 @@ import flash from "connect-flash";
 import mongoDBStore from "connect-mongodb-session";
 import userRouter from "./modules/User/user.router.js";
 import messageRouter from "./modules/Message/message.router.js";
+import cors from "cors";
 const MongoDBStore = mongoDBStore(session);
 // import { extend } from "joi";
 const __filename = fileURLToPath(import.meta.url);
@@ -36,7 +37,9 @@ export const initApp = async (app, express) => {
     })
   );
   app.use(flash());
+  app.use(cors());
   app.get("/", (req, res) => {
+    console.log(`here is my first step in my app`)
     res.redirect("/auth");
   });
   app.use("/auth", authRouter);

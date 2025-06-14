@@ -12,6 +12,7 @@ export const sendMessage = async (req, res, next) => {
 
   const message = await Message.create({ content, receiver: id, sender: req.user._id });
 
+
   req.flash("messages", "the message is send successfully");
 
   return res.redirect(`/user/${id}/shareProfile`);
